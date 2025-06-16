@@ -7,13 +7,13 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Timofey Bryksin"
+title                    : "Sergey Titov"
 title_separator          : "—"
-name                     : &name "Timofey Bryksin"
-description              : &description "Timofey Bryksin"
-url                      : "https://bryksin.me" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+name                     : &name "Sergey Titov"
+description              : &description "Sergey Titov"
+url                      : "https://titovs.github.io/" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "jzuken/jzuken.github.io"
+repository               : "titovs/titovs.github.io"
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
 breadcrumbs              : false # true, false (default)
 words_per_minute         : 160
@@ -57,7 +57,7 @@ yandex_site_verification :
 
 # Social Sharing
 twitter:
-  username               : timofeybryksin
+  username               : smtitov
 facebook:
   username               :
   app_id                 :
@@ -80,15 +80,15 @@ analytics:
 
 # Site Author
 author:
-  name             : "Timofey Bryksin"
-  avatar           : "main.png"
-  bio              : "Head of JetBrains Research"
-  location         : "Republic of Cyprus"
+  name             : "Sergey Titov"
+  avatar           : "main.jpeg"
+  bio              : "Head of the Code Modeling Research team"
+  location         : "Amsterdam, Netherlands"
   employer         :
   pubmed           :
-  googlescholar    : "https://scholar.google.com/citations?user=kcbdyR4AAAAJ&hl=en"
-  email            : "timofey.bryksin[at]jetbrains.com"
-  researchgate     : "https://www.researchgate.net/profile/Timofey-Bryksin-2"
+  googlescholar    : "https://scholar.google.com/citations?user=QmsZ42cAAAAJ&hl=en"
+  email            : "sergey.titov[at]jetbrains.com"
+  researchgate     :
   uri              :
   bitbucket        :
   codepen          :
@@ -96,26 +96,26 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : "jzuken"
+  github           : "TitovS"
   google_plus      :
   keybase          :
   instagram        :
   impactstory      :
   lastfm           :
-  linkedin         : "timofey-bryksin-84a6548b"
-  orcid            : "https://orcid.org/0000-0001-9022-3563"
+  linkedin         : "titovs"
+  orcid            : "https://orcid.org/0000-0001-5941-7490"
   pinterest        :
   soundcloud       :
   stackoverflow    :
   steam            :
   tumblr           :
-  twitter          : "timofeybryksin"
+  twitter          : "smtitov"
   vine             :
   weibo            :
   xing             :
   youtube          :
   wikipedia        :
-  dblp             : "https://dblp.org/pid/136/0260.html"
+  dblp             : "https://dblp.org/pid/258/6022.html"
 
 
 # Reading Files
