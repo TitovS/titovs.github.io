@@ -3,11 +3,5 @@ main:
   - title: "Publications"
     url: /publications/
 
-  - title: "Tools"
-    url: /tools/
-
   - title: "Academic work"
     url: /academic_work/
-
-  - title: "Talks"
-    url: /talks/
