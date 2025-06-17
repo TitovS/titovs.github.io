@@ -24,7 +24,7 @@ author_profile: true
 <h3>Organizer</h3>
 
 <b>2011–2014</b>: Saint-Petersburg State University Winter Psychology School<br>
-<b>2011–2014</b>: <a href="https://english.spbu.ru/news-events/calendar/psychology-21st-century-humanity-and-world">International Conference of Young Scientists «Psychology of XXI century»</a>
+<b>2011–2014</b>: <a href="https://english.spbu.ru/news-events/calendar/psychology-21st-century-humanity-and-world">International Conference of Young Scientists «Psychology of the XXI century»</a>
 
 <h3>Awardee</h3>
 
@@ -33,8 +33,6 @@ author_profile: true
 <hr color="#888888" size="4" noshade>
 
 <h2>Educational work</h2>
-
-<h3>Teaching</h3>
 
 <b>2023</b>: Lecturer in the _“Introduction to Statistics”_ course at <a href="https://www.nup.ac.cy/">Neapolis University Pafos</a>.<br>
 <b>2022</b>: Lecturer in the _“Introduction to Statistics”_ course at <a href="https://constructor.university/">Constructor University</a>.<br>
