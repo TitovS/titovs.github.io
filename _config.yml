@@ -82,9 +82,9 @@ analytics:
 author:
   name             : "Sergey Titov"
   avatar           : "main.jpeg"
-  bio              : "Head of the Code Modeling Research team at JetBrains Research"
+  bio              :
   location         : "Amsterdam, Netherlands"
-  employer         :
+  employer         : "Head of the Code Modeling Research team at JetBrains Research"
   pubmed           :
   googlescholar    : "https://scholar.google.com/citations?user=QmsZ42cAAAAJ&hl=en"
   email            : "sergey.titov[at]jetbrains.com"
