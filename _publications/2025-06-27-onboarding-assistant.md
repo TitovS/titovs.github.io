@@ -1,12 +1,13 @@
 ---
 title: "A Multi-agent Onboarding Assistant based on Large Language Models, Retrieval Augmented Generation, and Chain-of-Thought"
 authors: '<i>Andrei Cristian Ionescu, Sergey Titov, and Maliheh Izadi</i>'
-status: "accepted"
+status: "published"
 collection: publications
 permalink: /publications/2025-06-27-onboarding-assistant
 date: 2025-06-27
-venue: "<b>FSE'25</b>"
+venue: "the proceedings of <b>FSE'25</b>"
 pdf: 'https://arxiv.org/abs/2503.23421'
+paperurl: 'https://doi.org/10.1145/3696630.3728611'
 video: 'https://www.youtube.com/watch?v=V18mjpziCvo'
 tool: 'https://onboarding.software/register?colab=true'
 level: 'A*'
