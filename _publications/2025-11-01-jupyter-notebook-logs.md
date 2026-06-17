@@ -3,8 +3,8 @@ title: "Observing Fine-Grained Changes in Jupyter Notebooks During Development T
 authors: '<i>Sergey Titov, Konstantin Grotov, Cristina Sarasua, Yaroslav Golubev, Dhivyabharathi Ramasamy, Alberto Bacchelli, Abraham Bernstein, and Timofey Bryksin</i>'
 status: "published"
 collection: publications
-permalink: /publications/2025-11-01-jupyter-notebook-logs
-date: 2025-11-01
+permalink: /publications/2026-11-01-jupyter-notebook-logs
+date: 2026-11-01
 venue: "the <b>Journal of Systems and Software</b>"
 paperurl: "https://doi.org/10.1016/j.jss.2026.112983"
 pdf: 'https://arxiv.org/abs/2507.15831'
