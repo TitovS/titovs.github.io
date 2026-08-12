@@ -1,12 +1,13 @@
 ---
 title: "Does In-IDE Calibration of Large Language Models work at Scale?"
 authors: '<i>Roham Koohestani, Agnia Sergeyuk, David Gros, Claudio Spiess, Sergey Titov, Prem Devanbu, and Maliheh Izadi</i>'
-status: "accepted"
+status: "published"
 collection: publications
 permalink: /publications/2026-07-05-in-ide-calibration
 date: 2026-07-05
-venue: "<b>FSE'26</b>"
+venue: "the proceedings of <b>FSE'26</b>"
 pdf: 'https://arxiv.org/abs/2510.22614'
+paperurl: 'https://doi.org/10.1145/3803437.3805234'
 data: 'https://zenodo.org/records/17433208'
 level: 'A*'
 counter_id: 'C17'
