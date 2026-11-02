@@ -7,8 +7,12 @@ redirect_from:
 - /about.html
 ---
 
-Hello! My name is Sergey, and I am the Head of the Code Modeling Research team at [JetBrains Research](https://lp.jetbrains.com/research/software-engineering/). 
-I joined JetBrains as Junior Researcher in 2020, became Researcher in 2022, Senior Researcher in 2024, and since 2025 I am lucky to lead an amazing research team working on code modeling and code generation.
+Hello! My name is Sergey, and I am the Team Lead of the Multi-task Learning team at [JetBrains Research](https://lp.jetbrains.com/research/software-engineering/). Before that, I held the following roles in the company:
+
+* 2025–2026: Team Lead of the Code Modeling Research team.
+* 2024–2025: Senior Researcher in the Code Modeling Research team.
+* 2020–2024: Researcher in the Machine Learning Methods in Software Engineering team and in the Intelligent Collaboration Tools Lab.
+
 Before JetBrains, I worked as a Data Scientist in fintech, applying ML models to macroeconomic indicators.
 
 My educational background is in psychology and philosophy, and I always strived to combine humanities and more technical studies.
