@@ -7,8 +7,9 @@ author_profile: true
 
 {% include base_path %}
 
-{% assign dated_roles = site.work_experience | where_exp: "role", "role.date_start != nil and role.date_start != ''" | sort: "date_start" | reverse %}
-{% assign undated_roles = site.work_experience | where_exp: "role", "role.date_start == nil or role.date_start == ''" %}
+{% assign dated_roles = site.work_experience | where_exp: "role", "role.date_start != nil" | where_exp: "role", "role.date_start != ''" | sort: "date_start" | reverse %}
+{% assign missing_dates = site.work_experience | where_exp: "role", "role.date_start == nil" %}
+{% assign undated_roles = site.work_experience | where_exp: "role", "role.date_start == ''" | concat: missing_dates %}
 {% assign roles = dated_roles | concat: undated_roles %}
 {% assign companies = roles | group_by: "company" %}
 {% for company in companies %}
