@@ -26,20 +26,30 @@ See more info at https://academicpages.github.io/
 
 ## Adding work experience
 
-The **Work experience** tab lists Markdown files from `_work_experience/`, just as publications are stored in `_publications/`. Each entry also has its own page.
+The **Work experience** tab lists Markdown files from `_work_experience/`, just as publications are stored in `_publications/`. Roles at the same company appear in a connected timeline. Each role also has its own page.
 
 Copy an existing entry and update its front matter:
 
 ```yaml
 ---
-title: "Role — Team"
+title: "Team Lead"
+team: "Multi-task Learning"
 company: "Company name"
-period: "2026–Present"
-order: 6
+location: "The Netherlands"
+date_start: "2026-07"
+date_finish: ""
+short_description: "A brief overview shown in the company timeline."
 ---
+
+Write the **long description** here, using Markdown. It appears on the
+individual role page and can include paragraphs, lists, and links.
 ```
 
-Write the role description below the front matter. The first paragraph appears in the listing; the full text appears on the role's page. Higher `order` values appear first. `company` is optional, and `period` can use approximate dates when exact dates are unavailable. Restart Jekyll after changing `_config.yml` to load the new collection.
+Use the exact same `company` name to group roles together. `team` and `location` are optional; locations appear in both the timeline and the individual role page. Roles are sorted by `date_start`, newest first, and companies are ordered by their most recent role's start date. Roles without a start date appear after dated roles.
+
+Keep dates quoted and use `YYYY`, `YYYY-MM`, or `YYYY-MM-DD`, depending on the precision you know. Leave `date_finish` blank for an ongoing role. When both dates are unknown, leave them blank and optionally add `date_note: "Before JetBrains"` (or `"Present"` for a current role whose start date is unknown). Otherwise the page shows "Dates not specified". Roles without a company name appear under "Earlier experience".
+
+`short_description` is displayed in the timeline and supports Markdown. The Markdown body below the front matter is the long description; there is no separate `description` field to keep in sync. The old `period` and `order` fields are no longer used.
 
 # Changelog -- bugfixes and enhancements
 

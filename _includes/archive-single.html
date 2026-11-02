@@ -62,7 +62,7 @@
 
   {% if post.collection == 'work_experience' %}
   {% include work-experience-meta.html role=post %}
-  <div class="archive__item-excerpt">{{ post.excerpt | markdownify }}</div>
+  <div class="archive__item-excerpt">{{ post.short_description | markdownify }}</div>
   {% elsif post.collection == 'teaching' %}
   <p> {{ post.type }}, <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%month, %Y" }} </p>
   {% elsif post.collection == 'publications' or post.collection == 'publicationsphysics' %}

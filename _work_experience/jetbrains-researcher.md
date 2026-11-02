@@ -1,8 +1,13 @@
 ---
-title: "Researcher — Machine Learning and Intelligent Collaboration"
+title: "Researcher"
+team: "Machine Learning Methods in Software Engineering / Intelligent Collaboration Tools Lab"
 company: "JetBrains Research"
-period: "2020–2024"
-order: 2
+location: "Cyprus"
+date_start: "2022"
+date_finish: "2024-09"
+short_description: "Machine learning and empirical studies in software engineering."
 ---
 
-I worked in the Machine Learning Methods in Software Engineering team and in the Intelligent Collaboration Tools Lab at JetBrains Research.
+Based in Cyprus, I worked as a Researcher at JetBrains Research, conducting machine learning and empirical studies in software engineering.
+
+My research at JetBrains included work in the Machine Learning Methods in Software Engineering team and the Intelligent Collaboration Tools Lab.

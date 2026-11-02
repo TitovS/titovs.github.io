@@ -1,3 +1,21 @@
-<p>
-  <strong>{{ include.role.period | escape }}</strong>{% if include.role.company %} · {{ include.role.company | escape }}{% endif %}
+{% assign show_work_company = false %}
+{% assign show_work_team = false %}
+{% if include.role.company and include.role.company != "" and include.hide_company != true %}{% assign show_work_company = true %}{% endif %}
+{% if include.role.team and include.role.team != "" %}{% assign show_work_team = true %}{% endif %}
+{% if show_work_team or show_work_company %}
+<p class="work-experience__team">
+  {% if show_work_team %}{{ include.role.team | escape }}{% endif %}{% if show_work_company %}{% if show_work_team %} · {% endif %}{{ include.role.company | escape }}{% endif %}
+</p>
+{% endif %}
+{% if include.role.location and include.role.location != "" %}
+<p class="work-experience__location">{{ include.role.location | escape }}</p>
+{% endif %}
+<p class="work-experience__dates">
+  {% if include.role.date_start and include.role.date_start != "" %}
+    {% include work-experience-date.html value=include.role.date_start %} – {% if include.role.date_finish and include.role.date_finish != "" %}{% include work-experience-date.html value=include.role.date_finish %}{% else %}Present{% endif %}
+  {% elsif include.role.date_finish and include.role.date_finish != "" %}
+    Until {% include work-experience-date.html value=include.role.date_finish %}
+  {% else %}
+    {{ include.role.date_note | default: "Dates not specified" | escape }}
+  {% endif %}
 </p>
