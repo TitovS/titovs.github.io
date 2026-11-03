@@ -3,6 +3,7 @@ name: Build CV
 on:
   push:
     paths:
+      - "main.tex"
       - "cv/**"
       - "_data/**"
       - "_config.yml"
@@ -11,6 +12,7 @@ on:
       - ".github/workflows/cv.yml"
   pull_request:
     paths:
+      - "main.tex"
       - "cv/**"
       - "_data/**"
       - "_config.yml"
@@ -34,7 +36,7 @@ jobs:
       - name: Check shared content and branch customization
         run: texlua cv/tests/check.lua
       - name: Compile PDF directly from YAML
-        run: latexmk -g -lualatex -halt-on-error -interaction=nonstopmode -file-line-error -outdir=cv/build cv/main.tex
+        run: latexmk -g -lualatex -halt-on-error -interaction=nonstopmode -file-line-error -outdir=cv/build main.tex
       - uses: actions/upload-artifact@v4
         with:
           name: cv-${{ github.sha }}

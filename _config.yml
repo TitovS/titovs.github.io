@@ -125,6 +125,7 @@ include:
   - files
 exclude:
   - cv
+  - main.tex
   - "*.sublime-project"
   - "*.sublime-workspace"
   - .asset-cache

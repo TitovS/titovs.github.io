@@ -56,7 +56,7 @@ Keep dates quoted and use `YYYY`, `YYYY-MM`, or `YYYY-MM-DD`, depending on the p
 The CV reads the site's YAML directly with LuaLaTeX. From the repository root:
 
 ```sh
-latexmk -g -lualatex -halt-on-error -interaction=nonstopmode -outdir=cv/build cv/main.tex
+latexmk -g -lualatex -halt-on-error -interaction=nonstopmode -outdir=cv/build main.tex
 ```
 
 The PDF is `cv/build/main.pdf`. Customize `_data/cv.yml` on each application

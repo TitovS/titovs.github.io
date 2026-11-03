@@ -6,7 +6,7 @@ generated LaTeX source, shell escape, or network access during compilation.
 From the repository root, with TeX Live or MacTeX installed:
 
 ```sh
-latexmk -g -lualatex -halt-on-error -interaction=nonstopmode -outdir=cv/build cv/main.tex
+latexmk -g -lualatex -halt-on-error -interaction=nonstopmode -outdir=cv/build main.tex
 ```
 
 Open `cv/build/main.pdf`. `-g` forces a fresh pass so newly added collection files
@@ -31,7 +31,7 @@ uses `short_description` and optional CV-only `highlights`. Existing inline HTML
 in publications and basic Markdown links/bold/code in summaries are reduced to
 plain text. New CV overrides should use plain text and YAML lists, not LaTeX or
 HTML. TeX special characters are escaped automatically. Unicode is supported by
-LuaLaTeX; additional scripts may require a different font in `main.tex`.
+LuaLaTeX; additional scripts may require a different font in `cv/main.tex`.
 
 Dates retain their known precision. Blank role end dates mean Present only when
 a start date exists; otherwise `date_note` or “Dates not specified” is printed.
@@ -101,15 +101,38 @@ at your existing website branch. A public repository's branches are public too.
 ## Overleaf
 
 For a first trial, upload a ZIP of the desired branch to a new Overleaf project.
-Keep the repository directory structure, including `_config.yml`, `_data/`,
+Keep the repository directory structure, including root `main.tex`, `_config.yml`, `_data/`,
 `_work_experience/`, `_publications/`, and `cv/` (including `vendor/`). Set:
 
-- **Main document:** `cv/main.tex`
+- **Main document:** `main.tex` at the project root
 - **Compiler:** LuaLaTeX
 
 Then edit `_data/cv.yml` and click Recompile. YAML is edited as source text; the
 PDF preview updates directly. Edit `cv/main.tex` for layout changes. No conversion
 script or generated content needs to be synchronized.
+
+The root `main.tex` loads the layout in `cv/main.tex`. Compile the root file to
+keep the Lua and YAML paths relative to the repository root. Do not upload only
+the `cv/` directory, flatten the folders, or move the layout to the project root.
+The project should contain:
+
+```text
+main.tex
+_config.yml
+_data/
+_work_experience/
+_publications/
+cv/
+  main.tex
+  content.lua
+  vendor/
+    tinyyaml.lua
+```
+
+If the log says `cannot open cv/content.lua`, confirm that this file exists under
+`cv/`, pull the latest GitHub changes using **Integrations → GitHub**, and select
+the root `main.tex` before recompiling. A project containing only the LaTeX layout
+is missing the data and Lua modules needed to build the CV.
 
 For ongoing synchronization, use Overleaf's GitHub/Git integration if available
 on your plan. Synchronization and branch support depend on that integration;
