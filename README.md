@@ -26,7 +26,7 @@ See more info at https://academicpages.github.io/
 
 ## Adding work experience
 
-The **Work experience** tab lists Markdown files from `_work_experience/`, just as publications are stored in `_publications/`. Roles at the same company appear in a connected timeline. Each role also has its own page.
+The **Work experience** tab lists Markdown files from `_work_experience/`, just as publications are stored in `_publications/`. Roles are grouped by company, with navigation links to each company. Role details sit alongside the full descriptions on desktop and stack above them on mobile. Each role also has its own page.
 
 Copy an existing entry and update its front matter:
 
@@ -38,18 +38,19 @@ company: "Company name"
 location: "The Netherlands"
 date_start: "2026-07"
 date_finish: ""
-short_description: "A brief overview shown in the company timeline."
+short_description: "A brief overview shown above the full description."
 ---
 
-Write the **long description** here, using Markdown. It appears on the
-individual role page and can include paragraphs, lists, and links.
+Write the **long description** here, using Markdown. It appears on both the
+Work experience page and the individual role page, and can include paragraphs,
+lists, and links to papers. Separate paragraphs with blank lines.
 ```
 
-Use the exact same `company` name to group roles together. `team` and `location` are optional; locations appear in both the timeline and the individual role page. Roles are sorted by `date_start`, newest first, and companies are ordered by their most recent role's start date. Roles without a start date appear after dated roles.
+Use the exact same `company` name to group roles together. `team` and `location` are optional; locations appear in both the overview and the individual role page. Roles are sorted by `date_start`, newest first, and companies are ordered by their most recent role's start date. Roles without a start date appear after dated roles.
 
 Keep dates quoted and use `YYYY`, `YYYY-MM`, or `YYYY-MM-DD`, depending on the precision you know. Leave `date_finish` blank for an ongoing role. When both dates are unknown, leave them blank and optionally add `date_note: "Before JetBrains"` (or `"Present"` for a current role whose start date is unknown). Otherwise the page shows "Dates not specified". Roles without a company name appear under "Earlier experience".
 
-`short_description` is displayed in the timeline and supports Markdown. The Markdown body below the front matter is the long description; there is no separate `description` field to keep in sync. The old `period` and `order` fields are no longer used.
+`short_description` is displayed as a lead paragraph in the overview and supports Markdown. The Markdown body below the front matter is the long description, displayed in full without expanding or opening another page; there is no separate `description` field to keep in sync. The old `period` and `order` fields are no longer used.
 
 ## Building a PDF CV
 

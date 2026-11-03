@@ -1,57 +1,67 @@
+.work-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6em 1.5em;
+  margin: 1.5em 0 2.5em;
+  font-size: 0.8em;
+  line-height: 1.5;
+}
+
 .work-company {
-  margin: 2em 0;
+  margin: 0 0 3em;
 }
 
 .work-company__name {
-  margin: 0 0 1em;
+  margin: 0;
+  padding-bottom: 0.75em;
+  border-bottom: 2px solid $link-color;
   font-size: $type-size-4;
+  line-height: 1.4;
+  scroll-margin-top: 2em;
 }
 
-.work-timeline {
+.work-roles {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.work-timeline__role {
-  position: relative;
+.work-roles__item {
   margin: 0;
-  padding: 0 0 1.75em 1.75em;
+  padding: 1.75em 0;
 
-  &::before {
-    position: absolute;
-    top: 0.6em;
-    bottom: -0.6em;
-    left: 0.3em;
-    width: 2px;
-    background: $border-color;
-    content: "";
-  }
-
-  &::after {
-    position: absolute;
-    top: 0.35em;
-    left: 0;
-    width: 0.7em;
-    height: 0.7em;
-    border: 2px solid $background-color;
-    border-radius: 50%;
-    background: $link-color;
-    content: "";
+  & + & {
+    border-top: 1px solid $border-color;
   }
 
   &:last-child {
     padding-bottom: 0;
-
-    &::before {
-      display: none;
-    }
   }
 }
 
-.work-timeline__title {
-  margin: 0 0 0.25em;
+.work-role {
+  display: grid;
+  gap: 1.25em;
+
+  @include breakpoint($medium) {
+    grid-template-columns: 10em minmax(0, 1fr);
+    gap: 2em;
+  }
+}
+
+.work-role__title {
+  margin: 0 0 0.6em;
   font-size: $type-size-5;
+  line-height: 1.4;
+
+  a {
+    color: $text-color;
+    text-decoration: none;
+
+    &:hover {
+      color: $link-color;
+    }
+  }
 }
 
 .work-experience__team,
@@ -62,15 +72,70 @@
 
 .work-experience__location,
 .work-experience__dates {
-  color: $gray;
+  color: $dark-gray;
   font-size: 0.875em;
 }
 
-.work-timeline__summary {
-  margin-top: 0.75em;
-  font-size: 0.9em;
+.work-role__header {
+  .work-experience__team {
+    margin-bottom: 0.75em;
+    font-size: 0.85em;
+    line-height: 1.5;
+  }
 
-  p:last-child {
-    margin-bottom: 0;
+  .work-experience__location,
+  .work-experience__dates {
+    font-size: 0.8em;
+  }
+}
+
+.work-role__body {
+  min-width: 0;
+  max-width: 68ch;
+  font-size: 1em;
+  line-height: 1.75;
+  overflow-wrap: break-word;
+
+  @include breakpoint($medium) {
+    font-size: 0.9em;
+  }
+
+  p {
+    margin: 0 0 1.1em;
+  }
+
+  a {
+    text-underline-offset: 0.15em;
+  }
+}
+
+.work-role__summary {
+  margin-bottom: 1.25em;
+  font-weight: 600;
+}
+
+.work-role__description > :last-child,
+.work-role__summary > :last-child {
+  margin-bottom: 0;
+}
+
+.work-navigation a:focus-visible,
+.work-role a:focus-visible {
+  outline: 2px solid $link-color;
+  outline-offset: 4px;
+}
+
+@media print {
+  .work-navigation {
+    display: none;
+  }
+
+  .work-role {
+    display: block;
+  }
+
+  .work-role__header {
+    margin-bottom: 1em;
+    break-after: avoid;
   }
 }
