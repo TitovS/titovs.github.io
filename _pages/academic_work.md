@@ -43,10 +43,7 @@ author_profile: true
 
 <h2>Educational work</h2>
 
-<b>2023</b>: Lecturer in the _“Introduction to Statistics”_ course at <a href="https://www.nup.ac.cy/">Neapolis University Pafos</a>.<br>
-<b>2022</b>: Lecturer in the _“Introduction to Statistics”_ course at <a href="https://constructor.university/">Constructor University</a>.<br>
-<b>2018–2020</b>: Assistant in the _“Philosophy of Computational Sciences”_ course at <a href="https://en.itmo.ru/">ITMO University</a>.<br>
-<b>2017, 2019</b>: Lecturer in the _“Social mechanics in networks, training, and organization"_ short-term educational program at the Saint-Petersburg State University Winter Psychology School.
+{% include teaching-list.html %}
 
 <hr color="#888888" size="4" noshade>
 

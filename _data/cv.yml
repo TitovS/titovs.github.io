@@ -1,0 +1,45 @@
+# This file affects only the PDF. Customize it independently on each CV branch.
+# Entry IDs are filenames without .md (experience/publications), or data keys.
+# Use "all" for newest-first order, [] to omit entries, or a list for exact order.
+sections:
+  - summary
+  - experience
+  - education
+  - teaching
+  - awards
+  - publications
+
+summary: >-
+  Team Lead of the Multi-task Learning team at JetBrains Research.
+  My research combines machine learning, software engineering, and human-AI interaction.
+
+# Name, location, email, website, GitHub, and LinkedIn default to _config.yml.
+# Optional PDF-only overrides, for example: profile: {location: "Amsterdam"}
+profile: {}
+
+# Explicit order puts the current role first even though its start date is unknown.
+experience:
+  - multi-task-learning-team-lead
+  - code-modeling-team-lead
+  - code-modeling-senior-researcher
+  - jetbrains-researcher
+  - jetbrains-junior-researcher
+  - fintech-data-scientist
+  - institute-of-philosophy-junior-researcher
+education:
+  - phd
+  - masters
+  - bachelors
+teaching: all
+awards: all
+publications: all
+
+# Overrides preserve the source website text. Supported fields are validated.
+# Example:
+# experience_overrides:
+#   code-modeling-team-lead:
+#     short_description: "Led seven researchers working on code generation."
+#     highlights:
+#       - "Managed colleagues and mentored students."
+experience_overrides: {}
+publication_overrides: {}

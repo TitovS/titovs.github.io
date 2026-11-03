@@ -51,6 +51,20 @@ Keep dates quoted and use `YYYY`, `YYYY-MM`, or `YYYY-MM-DD`, depending on the p
 
 `short_description` is displayed in the timeline and supports Markdown. The Markdown body below the front matter is the long description; there is no separate `description` field to keep in sync. The old `period` and `order` fields are no longer used.
 
+## Building a PDF CV
+
+The CV reads the site's YAML directly with LuaLaTeX. From the repository root:
+
+```sh
+latexmk -g -lualatex -halt-on-error -interaction=nonstopmode -outdir=cv/build cv/main.tex
+```
+
+The PDF is `cv/build/main.pdf`. Customize `_data/cv.yml` on each application
+branch to select entries and override PDF wording without changing website text.
+GitHub Actions builds a downloadable PDF artifact on relevant pushes; it does not
+deploy the website. See [the CV guide](cv/README.md) for dependencies, shared data,
+branch customization, and Overleaf setup.
+
 # Changelog -- bugfixes and enhancements
 
 There is one logistical issue with a ready-to-fork template theme like academic pages that makes it a little tricky to get bug fixes and updates to the core theme. If you fork this repository, customize it, then pull again, you'll probably get merge conflicts. If you want to save your various .yml configuration files and markdown files, you can delete the repository and fork it again. Or you can manually patch. 

@@ -1,0 +1,21 @@
+bachelors:
+  degree: "Bachelor's degree"
+  subject: "Psychology"
+  institution: "Saint Petersburg State University"
+  url: "https://english.spbu.ru/"
+  date_finish: "2014"
+masters:
+  degree: "Master's degree"
+  subject: "Complex Systems"
+  institution: "Saint Petersburg State University"
+  url: "https://english.spbu.ru/"
+  date_finish: "2016"
+phd:
+  degree: "PhD"
+  subject: "Philosophy"
+  institution: "State Academic University for the Humanities"
+  url: "https://gaugn.ru/en/"
+  date_start: "2016"
+  date_finish: "2020"
+  completed: false
+  focus: "the philosophy of data science and scientific explanation"

@@ -1,0 +1,2 @@
+{% for item in site.data.teaching %}{% assign teaching = item[1] %}<b>{{ teaching.period | escape }}</b>: {{ teaching.role | escape }} in the _“{{ teaching.course | escape }}”_ {{ teaching.kind | escape }} at {% if teaching.url %}<a href="{{ teaching.url | escape }}">{{ teaching.institution | escape }}</a>{% else %}{{ teaching.institution | escape }}{% endif %}.{% unless forloop.last %}<br>{% endunless %}
+{% endfor %}

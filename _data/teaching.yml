@@ -1,0 +1,27 @@
+neapolis-statistics:
+  period: "2023"
+  role: "Lecturer"
+  course: "Introduction to Statistics"
+  kind: "course"
+  institution: "Neapolis University Pafos"
+  url: "https://www.nup.ac.cy/"
+constructor-statistics:
+  period: "2022"
+  role: "Lecturer"
+  course: "Introduction to Statistics"
+  kind: "course"
+  institution: "Constructor University"
+  url: "https://constructor.university/"
+itmo-philosophy:
+  period: "2018–2020"
+  role: "Assistant"
+  course: "Philosophy of Computational Sciences"
+  kind: "course"
+  institution: "ITMO University"
+  url: "https://en.itmo.ru/"
+winter-school:
+  period: "2017, 2019"
+  role: "Lecturer"
+  course: "Social mechanics in networks, training, and organization"
+  kind: "short-term educational program"
+  institution: "the Saint-Petersburg State University Winter Psychology School"
