@@ -84,7 +84,9 @@
   }
 
   .work-experience__location,
-  .work-experience__dates {
+  .work-experience__dates,
+  .work-role__summary {
+    color: mix(#000, $gray, 15%);
     font-size: 0.8em;
   }
 }
@@ -110,8 +112,15 @@
 }
 
 .work-role__summary {
-  margin-bottom: 1.25em;
-  font-weight: 600;
+  margin-top: 1em;
+  padding-top: 1em;
+  border-top: 1px solid $border-color;
+  font-weight: 400;
+  line-height: 1.6;
+
+  p {
+    margin: 0 0 0.75em;
+  }
 }
 
 .work-role__description > :last-child,

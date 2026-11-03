@@ -38,7 +38,7 @@ company: "Company name"
 location: "The Netherlands"
 date_start: "2026-07"
 date_finish: ""
-short_description: "A brief overview shown above the full description."
+short_description: "A brief overview shown beneath the role details."
 ---
 
 Write the **long description** here, using Markdown. It appears on both the
@@ -50,7 +50,7 @@ Use the exact same `company` name to group roles together. `team` and `location`
 
 Keep dates quoted and use `YYYY`, `YYYY-MM`, or `YYYY-MM-DD`, depending on the precision you know. Leave `date_finish` blank for an ongoing role. When both dates are unknown, leave them blank and optionally add `date_note: "Before JetBrains"` (or `"Present"` for a current role whose start date is unknown). Otherwise the page shows "Dates not specified". Roles without a company name appear under "Earlier experience".
 
-`short_description` is displayed as a lead paragraph in the overview and supports Markdown. The Markdown body below the front matter is the long description, displayed in full without expanding or opening another page; there is no separate `description` field to keep in sync. The old `period` and `order` fields are no longer used.
+`short_description` appears beneath the role details in a separate block of smaller, muted text and supports Markdown. The Markdown body below the front matter is the long description, displayed in full without expanding or opening another page; there is no separate `description` field to keep in sync. The old `period` and `order` fields are no longer used.
 
 ## Building a PDF CV
 

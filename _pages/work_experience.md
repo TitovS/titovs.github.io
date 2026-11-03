@@ -28,11 +28,11 @@ author_profile: true
         <header class="work-role__header">
           <h3 class="work-role__title" id="work-role-{{ role.slug }}"><a href="{{ base_path }}{{ role.url }}">{{ role.title | escape }}</a></h3>
           {% include work-experience-meta.html role=role hide_company=true %}
-        </header>
-        <div class="work-role__body">
           {% if role.short_description %}
           <div class="work-role__summary">{{ role.short_description | markdownify }}</div>
           {% endif %}
+        </header>
+        <div class="work-role__body">
           <div class="work-role__description">{{ role.content | markdownify }}</div>
         </div>
       </article>
