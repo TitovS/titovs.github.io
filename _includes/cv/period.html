@@ -1,0 +1,7 @@
+{%- if include.start and include.start != "" -%}
+  {% include work-experience-date.html value=include.start %} – {% if include.finish and include.finish != "" %}{% include work-experience-date.html value=include.finish %}{% else %}Present{% endif %}
+{%- elsif include.finish and include.finish != "" -%}
+  Until {% include work-experience-date.html value=include.finish %}
+{%- else -%}
+  {{ include.note | default: "Dates not specified" | escape }}
+{%- endif -%}

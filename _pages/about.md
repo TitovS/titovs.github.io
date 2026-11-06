@@ -7,7 +7,7 @@ redirect_from:
 - /about.html
 ---
 
-Hello! My name is Sergey, and I am the Team Lead of the Multi-task Learning team at [JetBrains Research](https://lp.jetbrains.com/research/software-engineering/). Before that, I held the following roles in the company:
+Hello! My name is Sergey, and I am the Team Lead of the Multi-Task Learning (MTL) team at [JetBrains Research](https://lp.jetbrains.com/research/software-engineering/). Before that, I held the following roles in the company:
 
 * 2025–2026: Team Lead of the Code Modeling Research team.
 * 2024–2025: Senior Researcher in the Code Modeling Research team.
@@ -20,4 +20,4 @@ My educational background is in psychology and philosophy, and I always strived 
 
 On this website, you can find the list of my [publications](https://titovs.github.io/publications/) and my [academic and educational work](https://titovs.github.io/academic_work/), including the classes I taught.
 
-Feel free to [contact me](mailto:sergey.titov[at]jetbrains.com) if you want to collaborate!
+Feel free to [contact me](mailto:{{ site.author.email }}) if you want to collaborate!

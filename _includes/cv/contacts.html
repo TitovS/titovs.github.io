@@ -1,0 +1,13 @@
+{% capture cv_location %}{% include cv/value.html entry=site.author override=site.data.cv.profile key="location" %}{% endcapture %}
+{% capture cv_email %}{% include cv/value.html entry=site.author override=site.data.cv.profile key="email" %}{% endcapture %}
+{% assign cv_email = cv_email | replace: "[at]", "@" %}
+{% capture cv_website %}{% include cv/value.html override=site.data.cv.profile key="website" fallback=site.url %}{% endcapture %}
+{% capture cv_github %}{% include cv/value.html entry=site.author override=site.data.cv.profile key="github" %}{% endcapture %}
+{% capture cv_linkedin %}{% include cv/value.html entry=site.author override=site.data.cv.profile key="linkedin" %}{% endcapture %}
+<ul class="cv-contacts" aria-label="Contact details">
+  {% if cv_location != empty %}<li>{{ cv_location }}</li>{% endif %}
+  {% if cv_email != empty %}<li><a href="mailto:{{ cv_email }}">{{ cv_email }}</a></li>{% endif %}
+  {% if cv_website != empty %}<li><a href="{{ cv_website }}">{{ cv_website | remove_first: "https://" | remove_first: "http://" }}</a></li>{% endif %}
+  {% if cv_github != empty %}<li><a href="https://github.com/{{ cv_github }}" aria-label="GitHub: {{ cv_github }}">{% include cv/social-icon.html name="github" %}<span>{{ cv_github }}</span></a></li>{% endif %}
+  {% if cv_linkedin != empty %}<li><a href="https://www.linkedin.com/in/{{ cv_linkedin }}" aria-label="LinkedIn: {{ cv_linkedin }}">{% include cv/social-icon.html name="linkedin" %}<span>{{ cv_linkedin }}</span></a></li>{% endif %}
+</ul>

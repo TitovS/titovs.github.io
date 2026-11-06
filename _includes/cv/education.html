@@ -1,0 +1,16 @@
+<article class="cv-entry" data-cv-id="{{ include.id | escape }}">
+  <div class="cv-entry-heading">
+    <h3>{{ include.entry.degree | escape }} in {{ include.entry.subject | escape }}{% if include.entry.completed == false %} <span class="cv-note">(not completed)</span>{% endif %}</h3>
+    <p class="cv-date">{% if include.entry.date_start and include.entry.date_start != "" %}{% include cv/period.html start=include.entry.date_start finish=include.entry.date_finish %}{% else %}{% include work-experience-date.html value=include.entry.date_finish %}{% endif %}</p>
+  </div>
+  <p class="cv-meta">{% if include.entry.url %}<a href="{{ include.entry.url | escape }}">{{ include.entry.institution | escape }}</a>{% else %}{{ include.entry.institution | escape }}{% endif %}</p>
+  {% if include.entry.focus %}<p>Focus: {{ include.entry.focus | escape }}.</p>{% endif %}
+  {% assign thesis = include.entry.thesis %}
+  {% if thesis.title and thesis.title != "" %}
+  <div class="cv-thesis">
+    <p><strong>Thesis:</strong> {% if thesis.url and thesis.url != "" %}<a href="{{ thesis.url | escape }}">{{ thesis.title | escape }}</a>{% else %}{{ thesis.title | escape }}{% endif %}</p>
+    {% if thesis.description and thesis.description != "" %}<div class="cv-thesis-description">{{ thesis.description | markdownify }}</div>{% endif %}
+    {% if thesis.supervisor and thesis.supervisor != "" %}<p class="cv-meta">Supervisor: {{ thesis.supervisor | escape }}</p>{% endif %}
+  </div>
+  {% endif %}
+</article>

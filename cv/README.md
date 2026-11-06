@@ -1,55 +1,93 @@
-# CV from the website's content
+# HTML CV and browser PDF export
 
-LuaLaTeX reads YAML **during compilation**. There is no Python/Pandoc conversion,
-generated LaTeX source, shell escape, or network access during compilation.
+Open the **CV** tab at `/cv/`, then click **Save as PDF**. In the browser print
+dialog, choose **Save as PDF**, paper **A4**, scale **100%**, and turn off
+**Headers and footers**. The print stylesheet defines page margins, hides the
+toolbar, and keeps entries together where they fit. Links remain clickable in
+the PDF. Chrome/Edge provide the most predictable pagination; exact page breaks
+can differ between browsers.
 
-From the repository root, with TeX Live or MacTeX installed:
+The CV is rendered by the site's existing Jekyll build. There is no LaTeX,
+Overleaf integration, or separate content conversion step.
 
-```sh
-latexmk -g -lualatex -halt-on-error -interaction=nonstopmode -outdir=cv/build main.tex
-```
+## Local preview
 
-Open `cv/build/main.pdf`. `-g` forces a fresh pass so newly added collection files
-are picked up as well as edits to existing ones. The compiler needs `fontspec`, `geometry`, `xcolor`,
-`hyperref`, `needspace`, `enumitem`, and the Latin Modern fonts. On Debian/Ubuntu,
-install `latexmk texlive-luatex texlive-latex-extra texlive-fonts-recommended`.
-Run the content checks with `texlua cv/tests/check.lua`.
+Use the site's normal `bundle exec jekyll serve` command and open
+`http://localhost:4000/cv/`. Or build once with `bundle exec jekyll build` and open
+`_site/cv/index.html` directly in your browser. The HTML embeds its styles and
+print button, uses system fonts, and needs no server or network connection to
+display or print. You can rename it to `sergey-titov-cv.html` and share it.
 
-## Shared content
+## Content and layout
+
+The CV opens with **Profile**, followed by the detailed sections. Edit `summary`
+in `_data/cv.yml` for your profile statement. Each position starts with two or
+three highlights, followed by its description. Highlights and descriptions use
+the same body size and line spacing, with space between them; dates and other
+metadata use one smaller size. Bullet markers sit inside the content column,
+with a small indent for the list text and its wrapped lines.
+Edit these bullets in the `highlights` list in each `_work_experience/*.md`
+file's front matter; use `[]` or omit the field for a role without highlights.
+Section labels sit in a narrow left column on desktop
+and in print, and above the content on mobile.
 
 | Source | Used for |
 | --- | --- |
-| `_config.yml` → `author`, `url` | Name and contact details |
-| `_work_experience/*.md` YAML front matter | Roles, dates, short descriptions |
-| `_publications/*.md` YAML front matter | Publication entries and awards |
-| `_data/education.yml` | Education in the PDF and homepage |
-| `_data/teaching.yml` | Teaching in the PDF and academic-work page |
-| `_data/cv.yml` | PDF-only profile, summary, selections, and wording overrides |
+| `_config.yml` → `author`, `url` | Default name and contact details |
+| `_work_experience/*.md` front matter | Roles, dates, short descriptions, highlights |
+| `_publications/*.md` front matter | Publications and awards |
+| `_data/education.yml` | Education in the CV and homepage |
+| `_data/teaching.yml` | Teaching in the CV and academic-work page |
+| `_data/cv.yml` | CV-only summary, selections, and wording overrides |
+| `_layouts/cv.html`, `_includes/cv/` | CV markup and screen/print styles |
 
-The long Markdown bodies of experience entries remain website content; the PDF
-uses `short_description` and optional CV-only `highlights`. Existing inline HTML
-in publications and basic Markdown links/bold/code in summaries are reduced to
-plain text. New CV overrides should use plain text and YAML lists, not LaTeX or
-HTML. TeX special characters are escaped automatically. Unicode is supported by
-LuaLaTeX; additional scripts may require a different font in `cv/main.tex`.
+The default CV uses the full Markdown bodies from the work-experience files,
+including their paper links. Set `experience_detail: summary` in `_data/cv.yml`
+for a shorter version using `short_description`. Roles without a body fall back
+to their summary. Both modes support optional `highlights`. Publication titles, authors, and venues
+use plain text, removing existing presentation tags from the site's metadata.
 
-Dates retain their known precision. Blank role end dates mean Present only when
-a start date exists; otherwise `date_note` or “Dates not specified” is printed.
-Accepted papers and preprints are labeled. All publications, including future
-dates, are included by default, matching the site's `future: true` setting. Use
-an explicit selection to omit workshop/full-paper duplicates or future entries.
-Conference attendance and miscellaneous service are not included in this initial
-template; the academic-work page continues to show them.
+Dates retain their known precision. A missing end date means Present when a
+start date exists; otherwise the CV uses `date_note` or “Dates not specified”.
+The default CV includes the completed degrees and five selected papers. Accepted
+papers and preprints are labeled. Explicit selections can include future dates,
+matching the site's current configuration; use `publications: all` for the full list.
+Conference attendance and miscellaneous service remain on the academic-work
+page and are not included in this template.
 
-The bundled parser supports a YAML subset. Use ordinary mappings, sequences,
-quoted strings, booleans, and `>` / `|` block text. Write Unicode characters
-directly. Avoid anchors, aliases, custom tags, merge keys, and `\u`/`\x` escapes
-in CV content. Keep dates quoted. `_config.yml`'s existing top-level anchors are
-not used by the CV; it reads the literal values in `author` and `url`.
+Optional thesis details go under the relevant degree in `_data/education.yml`:
+
+```yaml
+thesis:
+  title: "Your thesis title"
+  description: >-
+    A short description of the research question, methods, and findings.
+  url: "https://example.com/thesis"
+  supervisor: "Supervisor name"
+```
+
+Only `title` is required; omit the other fields if not needed. The description
+supports Markdown. No thesis block is shown until a title is supplied.
+Thesis titles also appear in an expandable list in the homepage education summary.
+
+The CV's `teaching` selection currently includes only the two Introduction to
+Statistics courses. Other teaching entries remain available in the shared data.
+
+Edit `skills` in `_data/cv.yml` as category/text pairs, for example:
+
+```yaml
+skills:
+  Programming: "Python, R, C++"
+  Software: "MATLAB, SPSS, Tableau"
+  Languages: "English (IELTS 7.0)"
+```
+
+Category order is preserved. Use `skills: {}` or remove `skills` from `sections`
+to omit the section. The initial list comes from the previous CV.
 
 ## One branch per application
 
-Create a branch such as `cv/company-name` and edit `_data/cv.yml` there. For example:
+Edit `_data/cv.yml` on a branch such as `cv/company-name`:
 
 ```yaml
 sections:
@@ -62,80 +100,52 @@ summary: >-
   Research lead focused on machine learning for developer tools.
 
 experience:
-  - multi-task-learning-team-lead
-  - code-modeling-team-lead
-  - fintech-data-scientist
+  - jetbrains-team-lead
+  - jetbrains-researcher
+  - dxfeed-data-scientist
 
 publications:
   - 2025-04-29-pandasplotbench
   - 2022-05-18-jupyter-analysis
 
 experience_overrides:
-  code-modeling-team-lead:
+  jetbrains-team-lead:
     short_description: "Led seven researchers working on code generation."
     highlights:
       - "Managed colleagues and mentored students."
 ```
 
-These IDs are source filenames without `.md`. Education and teaching IDs are
-keys in their YAML files; award IDs are publication filenames. Selections accept
-`all` (newest first), `[]` (none), or a list (exact order). Omitted selections
-default to `all`; `sections` controls which sections appear and their order.
-Unknown/duplicate IDs, sections, and override fields fail the build.
+IDs are filenames without `.md` for experience/publications, keys in the shared
+YAML for education/teaching, and publication IDs for awards. Selections accept
+`all` (source dates, newest first), `[]` (none), or a list (exact order). Omitted
+selections default to `all`; `sections` controls which sections appear and their
+order. Empty sections have no heading.
 
 `profile` can override `name`, `location`, `email`, `website`, `github`, and
 `linkedin`. Set a field to `""` to hide it; GitHub/LinkedIn values are usernames.
 `experience_overrides` supports `title`, `company`, `team`, `location`,
-`date_start`, `date_finish`, `date_note`, `short_description`, and `highlights`.
+`date_start`, `date_finish`, `date_note`, `short_description`, `description`, and
+`highlights`. `description` overrides the full body only in the CV; it does not
+change the source role page. Use `short_description` for summary mode.
 `publication_overrides` supports `title`, `authors`, `venue`, `date`, `status`,
-`paperurl`, and `award`. Overrides affect the PDF only. Shared facts can still be
-merged from the main branch; resolve any `_data/cv.yml` conflicts deliberately.
+`paperurl`, and `award`. Overrides affect only the CV page and printed PDF.
+Explicit lists preserve your preferred order even if you override dates.
 
-GitHub Actions compiles the checked-out branch on relevant pushes and pull
-requests, or manually via **Actions → Build CV → Run workflow**. Download the
-`cv-<commit>` artifact from the completed run. Artifacts expire after 14 days;
-download a copy or rerun the workflow later. The workflow does not commit PDFs,
-change GitHub Pages settings, or deploy application branches. Keep Pages pointed
-at your existing website branch. A public repository's branches are public too.
+After pushing, open **Actions → Build CV preview**, select the run for your
+branch, and download `cv-<commit>`. Unzip it and open `index.html`, then print.
+The workflow builds an HTML artifact; it does not deploy branches or commit PDFs.
+Artifacts expire after 14 days; download a copy or rerun the workflow later.
+The website's existing deployment still determines what appears at `/cv/`.
 
-## Overleaf
+Validate configuration and a rendered preview with:
 
-For a first trial, upload a ZIP of the desired branch to a new Overleaf project.
-Keep the repository directory structure, including root `main.tex`, `_config.yml`, `_data/`,
-`_work_experience/`, `_publications/`, and `cv/` (including `vendor/`). Set:
-
-- **Main document:** `main.tex` at the project root
-- **Compiler:** LuaLaTeX
-
-Then edit `_data/cv.yml` and click Recompile. YAML is edited as source text; the
-PDF preview updates directly. Edit `cv/main.tex` for layout changes. No conversion
-script or generated content needs to be synchronized.
-
-The root `main.tex` loads the layout in `cv/main.tex`. Compile the root file to
-keep the Lua and YAML paths relative to the repository root. Do not upload only
-the `cv/` directory, flatten the folders, or move the layout to the project root.
-The project should contain:
-
-```text
-main.tex
-_config.yml
-_data/
-_work_experience/
-_publications/
-cv/
-  main.tex
-  content.lua
-  vendor/
-    tinyyaml.lua
+```sh
+bundle exec ruby cv/check.rb
+bundle exec jekyll build
+bundle exec ruby cv/check.rb _site/cv/index.html
+bundle exec ruby cv/tests/render.rb
 ```
 
-If the log says `cannot open cv/content.lua`, confirm that this file exists under
-`cv/`, pull the latest GitHub changes using **Integrations → GitHub**, and select
-the root `main.tex` before recompiling. A project containing only the LaTeX layout
-is missing the data and Lua modules needed to build the CV.
-
-For ongoing synchronization, use Overleaf's GitHub/Git integration if available
-on your plan. Synchronization and branch support depend on that integration;
-do not assume one Overleaf project tracks your local active branch. Use a
-separate project per application version and verify its source branch before
-syncing. A ZIP upload is a snapshot and does not establish synchronization.
+The checks reject unknown/duplicate IDs, unsupported override fields, and invalid
+selections. Rendering also displays a visible error for missing selected entries
+so a typo does not silently remove experience from the CV.

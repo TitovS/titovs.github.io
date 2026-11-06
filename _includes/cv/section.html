@@ -1,0 +1,79 @@
+{% assign cv_selection = site.data.cv[include.name] %}
+{% assign cv_collection = nil %}
+{% assign cv_data = nil %}
+{% assign cv_title = nil %}
+{% case include.name %}
+  {% when "summary" %}{% assign cv_title = "Profile" %}
+  {% when "skills" %}{% assign cv_title = "Skills" %}
+  {% when "experience" %}
+    {% assign cv_title = "Experience" %}
+    {% assign cv_collection = site.work_experience | sort: "date_start" | reverse %}
+  {% when "publications" %}
+    {% assign cv_title = "Publications" %}
+    {% if cv_selection != nil and cv_selection != "all" %}{% assign cv_title = "Selected publications" %}{% endif %}
+    {% assign cv_collection = site.publications | sort: "date" | reverse %}
+  {% when "awards" %}
+    {% assign cv_title = "Awards" %}
+    {% assign cv_collection = site.publications | sort: "date" | reverse %}
+  {% when "education" %}
+    {% assign cv_title = "Education" %}
+    {% assign cv_data = site.data.education %}
+    {% assign cv_date_key = "date_finish" %}
+  {% when "teaching" %}
+    {% assign cv_title = "Teaching" %}
+    {% assign cv_data = site.data.teaching %}
+    {% assign cv_date_key = "period" %}
+{% endcase %}
+{% capture cv_section_content %}
+  {% if include.name == "summary" %}
+    {% if site.data.cv.summary and site.data.cv.summary != "" %}<div class="cv-summary">{{ site.data.cv.summary | markdownify }}</div>{% endif %}
+  {% elsif include.name == "skills" %}
+    {% if site.data.cv.skills.size > 0 %}
+    <dl class="cv-skills">
+      {% for skill in site.data.cv.skills %}
+      <div><dt>{{ skill[0] | escape }}</dt><dd>{{ skill[1] | escape }}</dd></div>
+      {% endfor %}
+    </dl>
+    {% endif %}
+  {% elsif cv_title %}
+    {% if cv_selection == nil or cv_selection == "all" %}
+      {% capture cv_ids %}{% if cv_collection %}{% for item in cv_collection %}{{ item.path | split: "/" | last | remove: ".md" }}|{% endfor %}{% else %}{% capture cv_sorted_keys %}{% for pair in cv_data %}{{ pair[1][cv_date_key] }}~{{ pair[0] }}|{% endfor %}{% endcapture %}{% assign cv_sorted_keys = cv_sorted_keys | split: "|" | sort | reverse %}{% for cv_key in cv_sorted_keys %}{{ cv_key | split: "~" | last }}|{% endfor %}{% endif %}{% endcapture %}
+      {% assign cv_selection = cv_ids | split: "|" %}
+    {% endif %}
+    {% for cv_id in cv_selection %}
+      {% assign cv_entry = nil %}
+      {% assign cv_override = nil %}
+      {% if cv_collection %}
+        {% for cv_candidate in cv_collection %}
+          {% assign cv_candidate_id = cv_candidate.path | split: "/" | last | remove: ".md" %}
+          {% if cv_candidate_id == cv_id %}{% assign cv_entry = cv_candidate %}{% break %}{% endif %}
+        {% endfor %}
+      {% else %}
+        {% assign cv_entry = cv_data[cv_id] %}
+      {% endif %}
+      {% if cv_entry %}
+        {% case include.name %}
+          {% when "experience" %}
+            {% assign cv_override = site.data.cv.experience_overrides[cv_id] %}
+            {% include cv/experience.html entry=cv_entry override=cv_override id=cv_id %}
+          {% when "publications", "awards" %}
+            {% assign cv_override = site.data.cv.publication_overrides[cv_id] %}
+            {% include cv/publication.html entry=cv_entry override=cv_override id=cv_id kind=include.name %}
+          {% when "education" %}{% include cv/education.html entry=cv_entry id=cv_id %}
+          {% when "teaching" %}{% include cv/teaching.html entry=cv_entry id=cv_id %}
+        {% endcase %}
+      {% else %}
+        <p class="cv-error">Unknown {{ include.name | escape }} entry: {{ cv_id | escape }}. Check the selection in _data/cv.yml.</p>
+      {% endif %}
+    {% endfor %}
+  {% else %}
+    <p class="cv-error">Unknown CV section: {{ include.name | escape }}.</p>
+  {% endif %}
+{% endcapture %}
+{% assign cv_section_content = cv_section_content | strip %}
+{% if cv_section_content != empty %}
+<section class="cv-section cv-section--{{ include.name | escape }}" aria-labelledby="cv-{{ include.name | escape }}">
+  <h2 id="cv-{{ include.name | escape }}">{{ cv_title | escape }}</h2>
+  <div class="cv-section-content">{{ cv_section_content }}</div>
+</section>
+{% endif %}

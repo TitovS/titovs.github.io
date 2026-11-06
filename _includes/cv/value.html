@@ -1,0 +1,8 @@
+{%- assign cv_value = include.entry[include.key] -%}
+{%- if cv_value == nil -%}{%- assign cv_value = include.fallback -%}{%- endif -%}
+{%- if include.override[include.key] != nil -%}{%- assign cv_value = include.override[include.key] -%}{%- endif -%}
+{%- case include.format -%}
+  {%- when "markdown" -%}{{ cv_value | markdownify }}
+  {%- when "html-text" -%}{{ cv_value | strip_html | escape }}
+  {%- else -%}{{ cv_value | escape }}
+{%- endcase -%}

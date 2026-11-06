@@ -1,15 +1,21 @@
+# Optional details under a degree: thesis: {title: "...", description: "...",
+# url: "https://...", supervisor: "..."}. Description supports Markdown.
 bachelors:
   degree: "Bachelor's degree"
   subject: "Psychology"
   institution: "Saint Petersburg State University"
   url: "https://english.spbu.ru/"
   date_finish: "2014"
+  thesis:
+    title: "Strategies of managing social capital and personal virtual social network state"
 masters:
   degree: "Master's degree"
   subject: "Complex Systems"
   institution: "Saint Petersburg State University"
   url: "https://english.spbu.ru/"
   date_finish: "2016"
+  thesis:
+    title: "The Search for discretisation invariants of strange attractors"
 phd:
   degree: "PhD"
   subject: "Philosophy"
@@ -18,4 +24,6 @@ phd:
   date_start: "2016"
   date_finish: "2020"
   completed: false
+  thesis:
+    title: "Data science and scientific explanation"
   focus: "the philosophy of data science and scientific explanation"

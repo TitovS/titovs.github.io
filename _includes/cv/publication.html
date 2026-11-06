@@ -1,0 +1,21 @@
+{% capture paper_title %}{% include cv/value.html entry=include.entry override=include.override key="title" %}{% endcapture %}
+{% capture paper_url %}{% include cv/value.html entry=include.entry override=include.override key="paperurl" %}{% endcapture %}
+{% assign paper_date = include.entry.date %}{% if include.override.date != nil %}{% assign paper_date = include.override.date %}{% endif %}
+{% capture paper_award %}{% include cv/value.html entry=include.entry override=include.override key="award" format="html-text" %}{% endcapture %}
+{% assign paper_award = paper_award | remove: "🏆" | strip %}
+{% capture paper_link %}{% if paper_url != empty %}<a href="{{ paper_url }}">{{ paper_title }}</a>{% else %}{{ paper_title }}{% endif %}{% endcapture %}
+{% if include.kind == "awards" %}
+  {% if paper_award != empty %}
+  <article class="cv-entry" data-cv-id="{{ include.id | escape }}">
+    <div class="cv-entry-heading"><h3>{{ paper_award }}</h3><p class="cv-date">{{ paper_date | date: "%Y" }}</p></div>
+    <p>{{ paper_link }}</p>
+  </article>
+  {% endif %}
+{% else %}
+  {% capture paper_status %}{% include cv/value.html entry=include.entry override=include.override key="status" %}{% endcapture %}
+  <article class="cv-entry cv-publication" data-cv-id="{{ include.id | escape }}">
+    <div class="cv-entry-heading"><h3>{{ paper_link }}</h3><p class="cv-date">{{ paper_date | date: "%Y" }}</p></div>
+    <p class="cv-authors">{% include cv/value.html entry=include.entry override=include.override key="authors" format="html-text" %}</p>
+    <p class="cv-meta">{% include cv/value.html entry=include.entry override=include.override key="venue" format="html-text" %}{% if paper_status == "accepted" %} · <span class="cv-status">Accepted</span>{% elsif paper_status == "preprint" %} · <span class="cv-status">Preprint</span>{% endif %}</p>
+  </article>
+{% endif %}

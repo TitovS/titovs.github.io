@@ -39,6 +39,8 @@ location: "The Netherlands"
 date_start: "2026-07"
 date_finish: ""
 short_description: "A brief overview shown beneath the role details."
+highlights:
+  - "A key contribution or result shown before the full description in the CV."
 ---
 
 Write the **long description** here, using Markdown. It appears on both the
@@ -52,19 +54,18 @@ Keep dates quoted and use `YYYY`, `YYYY-MM`, or `YYYY-MM-DD`, depending on the p
 
 `short_description` appears beneath the role details in a separate block of smaller, muted text and supports Markdown. The Markdown body below the front matter is the long description, displayed in full without expanding or opening another page; there is no separate `description` field to keep in sync. The old `period` and `order` fields are no longer used.
 
-## Building a PDF CV
+Keep each role's `highlights` in its Markdown front matter alongside the title and dates. These are plain-text bullets shown before the description in the CV. Omit the field or use `highlights: []` for a role without highlights. CV-specific replacements can still be set in `_data/cv.yml` under `experience_overrides` when tailoring an application.
 
-The CV reads the site's YAML directly with LuaLaTeX. From the repository root:
+## Saving a PDF CV
 
-```sh
-latexmk -g -lualatex -halt-on-error -interaction=nonstopmode -outdir=cv/build main.tex
-```
+Open the **CV** tab (`/cv/`) and click **Save as PDF**. In the browser's print
+dialog, choose **Save as PDF**, **A4**, and turn off headers and footers. The CV
+uses the same Jekyll build as the website; no separate rendering engine is needed.
 
-The PDF is `cv/build/main.pdf`. Customize `_data/cv.yml` on each application
-branch to select entries and override PDF wording without changing website text.
-GitHub Actions builds a downloadable PDF artifact on relevant pushes; it does not
-deploy the website. See [the CV guide](cv/README.md) for dependencies, shared data,
-branch customization, and Overleaf setup.
+Customize `_data/cv.yml` on each application branch to select entries and override
+CV wording without changing the other pages. GitHub Actions builds a standalone
+HTML preview for each branch that you can download, open, and print locally.
+See [the CV guide](cv/README.md) for shared content and branch customization.
 
 # Changelog -- bugfixes and enhancements
 

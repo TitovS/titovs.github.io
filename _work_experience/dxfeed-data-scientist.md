@@ -5,9 +5,13 @@ location: "Russia"
 date_start: "2017-09"
 date_finish: "2020-09"
 short_description: "Applied machine learning to financial data, developed analytics libraries, and led a joint research project with the University of St. Gallen."
+highlights:
+  - "Applied machine learning to financial data, including sentiment analysis and iceberg order detection."
+  - "Developed financial analysis tools in R and Python."
+  - "Led data analysis and technical implementation for the EQX index with the University of St. Gallen."
 ---
 
-As a Data Scientist at DevExperts (dxFeed), I applied machine learning methods to financial data, evaluated data quality, and developed tools for financial analysis.
+As a Data Scientist at dxFeed, I applied machine learning methods to financial data, evaluated data quality, and developed tools for financial analysis.
 
 From 2017 to mid-2018, I developed R code for calculating financial indices, following tidyverse principles and incorporating interactive documentation. I worked in a fast-paced environment with weekly deliverables and rapid client feedback.
 

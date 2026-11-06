@@ -5,11 +5,13 @@ location: "Russia / Cyprus / Netherlands"
 date_start: "2020-09"
 date_finish: "2025-01"
 short_description: "Machine learning and empirical studies in software engineering."
+highlights:
+  - "Initiated a Jupyter notebook research programme that produced five papers, several tools, and improvements to notebook-based products."
+  - "Led Kotlin ML Pack, an open-source collection of datasets, benchmarks, and fine-tuned models for Kotlin."
 ---
 
-I joined JetBrains in September 2020 as a software engineering researcher, working on machine learning and empirical studies.
-
-I initiated a research project on Jupyter notebooks, working with several interns on exploratory studies and
+As I joined JetBrains, I initiated a research project on Jupyter notebooks, working with several interns on exploratory 
+studies and
 publishing multiple papers on notebook usage and potential tooling. Two highlights were a [large-scale study of
 publicly available open-source notebooks](https://doi.org/10.1145/3524842.3528447 "A Large-Scale Comparison of Python Code in Jupyter Notebooks and Scripts")
 and an [observational study of fine-grained notebook changes](https://doi.org/10.1016/j.jss.2026.112983 "Observing Fine-Grained Changes in Jupyter Notebooks During Development Time"),

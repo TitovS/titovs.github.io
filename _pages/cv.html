@@ -1,0 +1,11 @@
+---
+layout: cv
+title: "Curriculum vitae"
+permalink: /cv/
+---
+
+{% assign cv_sections = site.data.cv.sections %}
+{% if cv_sections == nil %}{% assign cv_sections = "summary,experience,education,skills,teaching,awards,publications" | split: "," %}{% endif %}
+{% for cv_section in cv_sections %}
+  {% include cv/section.html name=cv_section %}
+{% endfor %}

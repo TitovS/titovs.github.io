@@ -1,0 +1,22 @@
+{% capture role_start %}{% include cv/value.html entry=include.entry override=include.override key="date_start" %}{% endcapture %}
+{% capture role_finish %}{% include cv/value.html entry=include.entry override=include.override key="date_finish" %}{% endcapture %}
+{% assign role_note = include.entry.date_note %}{% if include.override.date_note != nil %}{% assign role_note = include.override.date_note %}{% endif %}
+{% capture role_company %}{% include cv/value.html entry=include.entry override=include.override key="company" %}{% endcapture %}
+{% capture role_team %}{% include cv/value.html entry=include.entry override=include.override key="team" %}{% endcapture %}
+{% capture role_location %}{% include cv/value.html entry=include.entry override=include.override key="location" %}{% endcapture %}
+{% assign role_detail = site.data.cv.experience_detail | default: "summary" %}
+{% assign role_description = include.entry.content | strip %}
+{% if include.override.description != nil %}{% assign role_description = include.override.description | strip %}{% endif %}
+{% assign role_full = false %}{% if role_detail == "full" and role_description != empty %}{% assign role_full = true %}{% endif %}
+{% assign role_highlights = include.entry.highlights %}{% if include.override.highlights != nil %}{% assign role_highlights = include.override.highlights %}{% endif %}
+<article class="cv-entry{% if role_full %} cv-entry--detailed{% endif %}" data-cv-id="{{ include.id | escape }}">
+  <header class="cv-entry-header">
+  <div class="cv-entry-heading">
+    <h3>{% include cv/value.html entry=include.entry override=include.override key="title" %}</h3>
+    <p class="cv-date">{% include cv/period.html start=role_start finish=role_finish note=role_note %}</p>
+  </div>
+  <p class="cv-meta">{{ role_company }}{% if role_team != empty %}{% if role_company != empty %} · {% endif %}{{ role_team }}{% endif %}{% if role_location != empty %}{% if role_company != empty or role_team != empty %} · {% endif %}{{ role_location }}{% endif %}</p>
+  </header>
+  {% if role_highlights.size > 0 %}<ul class="cv-highlights">{% for highlight in role_highlights %}<li>{{ highlight | escape }}</li>{% endfor %}</ul>{% endif %}
+  <div class="cv-description">{% if role_full %}{{ role_description | markdownify }}{% else %}{% include cv/value.html entry=include.entry override=include.override key="short_description" format="markdown" %}{% endif %}</div>
+</article>

@@ -1,23 +1,33 @@
-name: Build CV
+name: Build CV preview
 
 on:
   push:
     paths:
-      - "main.tex"
       - "cv/**"
       - "_data/**"
       - "_config.yml"
       - "_work_experience/**"
       - "_publications/**"
+      - "_pages/cv.html"
+      - "_layouts/cv.html"
+      - "_includes/cv/**"
+      - "_includes/work-experience-date.html"
+      - "Gemfile"
+      - "Gemfile.lock"
       - ".github/workflows/cv.yml"
   pull_request:
     paths:
-      - "main.tex"
       - "cv/**"
       - "_data/**"
       - "_config.yml"
       - "_work_experience/**"
       - "_publications/**"
+      - "_pages/cv.html"
+      - "_layouts/cv.html"
+      - "_includes/cv/**"
+      - "_includes/work-experience-date.html"
+      - "Gemfile"
+      - "Gemfile.lock"
       - ".github/workflows/cv.yml"
   workflow_dispatch:
 
@@ -25,21 +35,25 @@ permissions:
   contents: read
 
 jobs:
-  pdf:
+  html:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install LuaLaTeX
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends latexmk texlive-luatex texlive-latex-extra texlive-fonts-recommended
-      - name: Check shared content and branch customization
-        run: texlua cv/tests/check.lua
-      - name: Compile PDF directly from YAML
-        run: latexmk -g -lualatex -halt-on-error -interaction=nonstopmode -file-line-error -outdir=cv/build main.tex
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+      - name: Validate CV selections
+        run: bundle exec ruby cv/check.rb
+      - name: Build website and standalone CV
+        run: bundle exec jekyll build
+      - name: Check rendered CV
+        run: bundle exec ruby cv/check.rb _site/cv/index.html
+      - name: Check branch customization
+        run: bundle exec ruby cv/tests/render.rb
       - uses: actions/upload-artifact@v4
         with:
           name: cv-${{ github.sha }}
-          path: cv/build/main.pdf
+          path: _site/cv/index.html
           if-no-files-found: error
           retention-days: 14

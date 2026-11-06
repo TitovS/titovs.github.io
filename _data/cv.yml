@@ -1,45 +1,60 @@
-# This file affects only the PDF. Customize it independently on each CV branch.
+# This file affects only /cv/ and its printed PDF. Customize it on each CV branch.
 # Entry IDs are filenames without .md (experience/publications), or data keys.
 # Use "all" for newest-first order, [] to omit entries, or a list for exact order.
 sections:
   - summary
   - experience
   - education
+  - skills
+  - publications
   - teaching
   - awards
-  - publications
 
 summary: >-
-  Team Lead of the Multi-task Learning team at JetBrains Research.
-  My research combines machine learning, software engineering, and human-AI interaction.
+  As a team lead, I believe in listening; as a researcher, in failure;
+  and as an engineer, in infrastructure. Give talented people the
+  infrastructure and time they need, and they can change the world.
 
 # Name, location, email, website, GitHub, and LinkedIn default to _config.yml.
-# Optional PDF-only overrides, for example: profile: {location: "Amsterdam"}
+# Optional CV-only overrides, for example: profile: {location: "Amsterdam"}
 profile: {}
 
-# Explicit order puts the current role first even though its start date is unknown.
+# Use "full" for the Markdown body of each role, or "summary" for a shorter CV.
+experience_detail: full
+
+# Explicit order follows the current role files; use "all" for automatic ordering.
 experience:
-  - multi-task-learning-team-lead
-  - code-modeling-team-lead
-  - code-modeling-senior-researcher
+  - jetbrains-team-lead
   - jetbrains-researcher
-  - jetbrains-junior-researcher
-  - fintech-data-scientist
+  - dxfeed-data-scientist
   - institute-of-philosophy-junior-researcher
 education:
-  - phd
   - masters
   - bachelors
-teaching: all
+teaching:
+  - neapolis-statistics
+  - constructor-statistics
 awards: all
-publications: all
+
+# Edit or remove skill categories here.
+skills:
+  LLM fine-tuning: "SFT, RL (NeMo RL, verl, Transformers, PyTorch)"
+  Evaluation: "Inspect AI, Harbor"
+  Infrastructure: "Docker, Kubernetes"
+
+# Selected for venue, relevance, and the distinguished-paper award.
+publications:
+  - 2026-12-06-libevobench-full
+  - 2026-12-06-benchmark-generalizability-full
+  - 2026-11-01-jupyter-notebook-logs
+  - 2026-07-05-in-ide-calibration
+  - 2022-05-18-jupyter-analysis
 
 # Overrides preserve the source website text. Supported fields are validated.
 # Example:
 # experience_overrides:
-#   code-modeling-team-lead:
+#   jetbrains-team-lead:
 #     short_description: "Led seven researchers working on code generation."
-#     highlights:
-#       - "Managed colleagues and mentored students."
+# Default highlights live in each _work_experience/*.md file.
 experience_overrides: {}
 publication_overrides: {}

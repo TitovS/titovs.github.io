@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="{{ site.locale | default: 'en' | split: '-' | first }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% capture cv_name %}{% include cv/value.html entry=site.author override=site.data.cv.profile key="name" %}{% endcapture %}
+  <title>{{ cv_name | strip }} — CV</title>
+  <meta name="description" content="Curriculum vitae of {{ cv_name | strip }}">
+  <style>{% include cv/styles.css %}</style>
+</head>
+<body>
+  <div class="cv-toolbar">
+    <a class="cv-back" href="{{ site.url }}{{ site.baseurl }}/">← Website</a>
+    <p>Choose “Save as PDF”, A4, and turn off headers and footers.</p>
+    <button type="button" id="cv-print">Save as PDF <span aria-hidden="true">↗</span></button>
+  </div>
+  <main class="cv-document">
+    <header class="cv-header">
+      <h1>{{ cv_name | strip }}</h1>
+      {% include cv/contacts.html %}
+    </header>
+    {{ content }}
+  </main>
+  <script>document.getElementById('cv-print').addEventListener('click', function () { window.print(); });</script>
+</body>
+</html>
